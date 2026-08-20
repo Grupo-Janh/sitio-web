@@ -1,0 +1,40 @@
+---
+import '../styles/global.css';
+const { titulo, descripcion } = Astro.props;
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet" />
+    <title>{titulo}</title>
+    <meta name="description" content={descripcion} />
+  </head>
+  <body class="font-sans antialiased">
+    <header class="border-b border-janh-tinta/10 bg-white/80 backdrop-blur sticky top-0 z-50">
+      <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <a href="/" class="text-xl font-bold tracking-[0.2em] text-janh-tinta">JANH</a>
+        <div class="flex gap-8 text-sm">
+          <a href="/servicios" class="hover:text-janh-magenta transition">Servicios</a>
+          <a href="/nosotros" class="hover:text-janh-magenta transition">Nosotros</a>
+          <a href="/contacto" class="hover:text-janh-magenta transition">Contacto</a>
+        </div>
+      </nav>
+    </header>
+
+    <main><slot /></main>
+
+    <footer class="mt-24 bg-janh-tinta text-janh-hueso">
+      <div class="mx-auto max-w-6xl px-6 py-12">
+        <p class="text-xs tracking-[0.2em] text-janh-hueso/50 uppercase">
+          Engineered elegantly. Technology, refined.
+        </p>
+        <p class="mt-4 text-sm text-janh-hueso/70">
+          &copy; {new Date().getFullYear()} Grupo JANH · Querétaro, México
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  /* Paleta JANH */
+  --color-janh-magenta: #C917ED;
+  --color-janh-violeta: #7C4387;
+  --color-janh-lila: #A438BA;
+  --color-janh-tinta: #322E33;
+  --color-janh-hueso: #F6F6FA;
+
+  /* Tipografía */
+  --font-sans: "Satoshi", system-ui, -apple-system, sans-serif;
+}
+
+/* Gradiente principal de marca */
+.gradiente-janh {
+  background-image: linear-gradient(90deg, var(--color-janh-violeta), var(--color-janh-magenta));
+}
+
+body {
+  background-color: var(--color-janh-hueso);
+  color: var(--color-janh-tinta);
+}

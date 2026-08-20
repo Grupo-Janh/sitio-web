@@ -1,0 +1,40 @@
+---
+import Base from '../layouts/Base.astro';
+import TarjetaServicio from '../components/TarjetaServicio.astro';
+
+const servicios = [
+  { titulo: 'Redes e infraestructura', texto: 'Diseño, instalación y monitoreo de red empresarial.' },
+  { titulo: 'Seguridad y firewall', texto: 'Protegemos lo que más importa de tu operación.' },
+  { titulo: 'Cloud y respaldos', texto: 'Infraestructura que crece contigo, con respaldo diario.' },
+  { titulo: 'Desarrollo a la medida', texto: 'Aplicaciones y automatización de procesos.' },
+];
+---
+<Base titulo="Grupo JANH | Soluciones de TI en Querétaro"
+      descripcion="Soluciones inteligentes que conectan, protegen y optimizan tu infraestructura.">
+
+  <section class="mx-auto max-w-6xl px-6 py-24 text-center">
+    <p class="text-xs tracking-[0.3em] text-janh-lila uppercase">
+      Secure. Scalable. Beautifully designed technology.
+    </p>
+    <h1 class="mt-6 text-4xl font-bold leading-tight text-janh-tinta md:text-6xl">
+      Soluciones inteligentes que<br />
+      <span class="bg-gradient-to-r from-janh-violeta to-janh-magenta bg-clip-text text-transparent">
+        conectan y protegen
+      </span>
+    </h1>
+    <p class="mx-auto mt-6 max-w-xl text-janh-tinta/60">
+      Optimizamos tu infraestructura para que tu negocio pueda crecer sin límites.
+    </p>
+    <a href="/contacto"
+       class="mt-10 inline-block rounded-full gradiente-janh px-8 py-3 text-sm font-medium text-white transition hover:opacity-90">
+      Solicitar cotización
+    </a>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-6 pb-24">
+    <h2 class="text-2xl font-semibold text-janh-tinta">Nuestros servicios</h2>
+    <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {servicios.map((s) => <TarjetaServicio titulo={s.titulo} texto={s.texto} />)}
+    </div>
+  </section>
+</Base>
