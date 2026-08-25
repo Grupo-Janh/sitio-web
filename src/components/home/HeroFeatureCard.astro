@@ -1,0 +1,108 @@
+---
+/**
+ * HERO FEATURE CARD — JANH
+ *
+ * RESPONSABILIDAD:
+ * Mostrar una solución destacada dentro del visual del Hero.
+ *
+ * SE UTILIZA PARA:
+ * - Cloud
+ * - Infraestructura
+ * - Ciberseguridad
+ *
+ * PROPS:
+ * icon        → representación visual temporal del servicio.
+ * title       → nombre del servicio.
+ * description → descripción corta.
+ * href        → destino al hacer clic.
+ *
+ * IMPORTANTE:
+ * Este componente NO decide dónde aparece.
+ * La posición de cada tarjeta la controla Hero.astro.
+ *
+ * DESPUÉS:
+ * - Sustituiremos los iconos temporales por SVG reales.
+ * - GSAP podrá animar su entrada y movimiento ambiental.
+ */
+
+const {
+  icon,
+  title,
+  description,
+  href = "/soluciones",
+} = Astro.props;
+---
+
+<a
+  href={href}
+  class="
+    group
+    block
+    rounded-2xl
+    border border-janh-tinta/10
+    bg-white/95
+    p-4
+    shadow-lg
+    backdrop-blur
+    transition
+    duration-300
+    hover:-translate-y-1
+    hover:shadow-xl
+  "
+>
+  <div class="flex items-start gap-3">
+
+    <!--
+      Icono temporal.
+      Después será sustituido por iconografía SVG.
+    -->
+    <div
+      class="
+        flex size-10 shrink-0
+        items-center justify-center
+        rounded-xl
+        bg-janh-hueso
+        text-janh-violeta
+      "
+      aria-hidden="true"
+    >
+      {icon}
+    </div>
+
+    <div class="min-w-0">
+
+      <div class="flex items-center justify-between gap-3">
+
+        <h3 class="text-sm font-semibold text-janh-tinta">
+          {title}
+        </h3>
+
+        <span
+          class="
+            text-janh-violeta
+            transition
+            group-hover:translate-x-1
+          "
+          aria-hidden="true"
+        >
+          →
+        </span>
+
+      </div>
+
+      <p
+        class="
+          mt-1
+          text-xs
+          leading-5
+          text-janh-tinta/60
+        "
+      >
+        {description}
+      </p>
+
+    </div>
+
+  </div>
+
+</a>

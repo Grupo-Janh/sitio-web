@@ -1,23 +1,12 @@
 ---
 import Base from '../layouts/Base.astro';
 import Hero from '../components/home/Hero.astro';
-import TarjetaServicio from '../components/TarjetaServicio.astro';        
+import Solutions from '../components/home/Solutions.astro';  
 
-const servicios = [
-  { titulo: 'Redes e infraestructura', texto: 'Diseño, instalación y monitoreo de red empresarial.' },
-  { titulo: 'Seguridad y firewall', texto: 'Protegemos lo que más importa de tu operación.' },
-  { titulo: 'Cloud y respaldos', texto: 'Infraestructura que crece contigo, con respaldo diario.' },
-  { titulo: 'Desarrollo a la medida', texto: 'Aplicaciones y automatización de procesos.' },
-];
+
 ---
 <Base titulo="Grupo JANH | Soluciones de TI en Querétaro"
       descripcion="Soluciones inteligentes que conectan, protegen y optimizan tu infraestructura.">
   <Hero />
-
-  <section class="mx-auto max-w-6xl px-6 pb-24">
-    <h2 class="text-2xl font-semibold text-janh-tinta">Nuestros servicios</h2>
-    <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-      {servicios.map((s) => <TarjetaServicio titulo={s.titulo} texto={s.texto} />)}
-    </div>
-  </section>
+  <Solutions />
 </Base>
