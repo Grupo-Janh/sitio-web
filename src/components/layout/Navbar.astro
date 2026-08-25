@@ -1,0 +1,70 @@
+---
+/**
+ * Navbar principal de JANH.
+ *
+ * RESPONSABILIDAD:
+ * Mostrar los enlaces principales de navegación.-------------
+ *
+ * NO CONTIENE:
+ * - Logo
+ * - Header completo
+ * - Footer
+ * - Hero
+ *
+ * Más adelante:
+ * - Dropdown de Soluciones
+ * - Menú móvil
+ * - Estados activos
+ */
+
+import { navigation } from '../../data/site';
+
+---
+
+<!-- SOLUCION ANTERIOR, AHORA REFACTORIZADA CON LINKS --><!-- 
+<nav aria-label="Navegación principal">
+  <div class="flex gap-8 text-sm">
+    <a
+      href="/soluciones"
+      class="transition hover:text-janh-magenta"
+    >
+      Soluciones
+    </a>
+
+    <a
+      href="/nosotros"
+      class="transition hover:text-janh-magenta"
+    >
+      Nosotros
+    </a>
+
+    <a
+      href="/contacto"
+      class="transition hover:text-janh-magenta"
+    >
+      Contacto
+    </a>
+  </div>
+</nav> -->
+<nav aria-label="Navegación principal" class="hidden lg:block">
+  <ul class="flex items-center gap-7">
+    {
+      navigation.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            class="flex items-center gap-1.5 text-sm font-medium text-janh-tinta transition hover:text-janh-magenta"
+          >
+            {link.label}
+
+            {link.submenu && (
+              <span aria-hidden="true" class="text-xs">
+                ↓
+              </span>
+            )}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>

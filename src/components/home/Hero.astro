@@ -1,0 +1,95 @@
+---
+/**
+ * Hero principal de la Home de JANH.
+ *
+ * RESPONSABILIDAD:
+ * - Presentar la propuesta principal de valor.
+ * - Mostrar CTAs.
+ * - Presentar visualmente las soluciones principales.
+ *
+ * ETAPA ACTUAL:
+ * Construcción estática y responsive.
+ *
+ * DESPUÉS:
+ * - Imagen optimizada
+ * - Floating cards
+ * - Datos externos
+ * - GSAP
+ */
+
+import Container from '../ui/Container.astro';
+---
+
+<section class="pt-8 pb-16 lg:pt-12 lg:pb-24">
+
+  <Container>
+
+    <div class="grid gap-8 lg:grid-cols-2 lg:gap-10">
+
+      <!-- =========================================
+           COLUMNA IZQUIERDA
+           Contenido principal del Hero
+      ========================================== -->
+
+      <div
+        class="rounded-3xl bg-white p-8 sm:p-10 lg:p-12"
+      >
+
+        <p
+          class="text-xs font-medium tracking-[0.15em] text-janh-lila uppercase"
+        >
+          Infraestructura · Videovigilancia · Redes · Ciberseguridad · Cloud
+        </p>
+
+        <h1
+          class="mt-7 text-4xl font-bold leading-[1.05] tracking-tight text-janh-tinta sm:text-5xl lg:text-6xl"
+        >
+          Tecnología que impulsa tu operación.
+        </h1>
+
+        <!-- Decorador -->
+        <div
+          class="mt-6 h-1 w-16 rounded-full gradiente-janh"
+          aria-hidden="true"
+        ></div>
+
+        <p
+          class="mt-8 max-w-xl text-base leading-7 text-janh-tinta/70"
+        >
+          Diseñamos, implementamos y operamos soluciones tecnológicas
+          que fortalecen tu empresa y la preparan para el futuro.
+        </p>
+
+      </div>
+
+
+      <!-- =========================================
+           COLUMNA DERECHA
+           Placeholder temporal del Hero visual
+      ========================================== -->
+
+      <div
+        class="flex min-h-[420px] items-center justify-center rounded-3xl border border-janh-tinta/10 bg-white"
+      >
+
+        <div class="text-center">
+
+          <p
+            class="text-xs font-medium tracking-[0.2em] text-janh-lila uppercase"
+          >
+            Hero visual
+          </p>
+
+          <p class="mt-3 text-sm text-janh-tinta/50">
+            Aquí irá la imagen principal
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </Container>
+
+</section>
