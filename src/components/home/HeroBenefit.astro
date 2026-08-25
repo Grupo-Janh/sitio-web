@@ -1,0 +1,35 @@
+
+---
+
+/**
+ * 
+ *encargado de los beneficios debajo del hero
+ */
+
+const {
+  title,
+  description,
+  icon = "•",
+} = Astro.props;
+---
+
+<div class="flex items-start gap-3">
+
+  <div
+    class="flex size-10 shrink-0 items-center justify-center rounded-xl border border-janh-violeta/20 text-janh-violeta"
+    aria-hidden="true"
+  >
+    {icon}
+  </div>
+
+  <div>
+    <h3 class="text-sm font-semibold text-janh-tinta">
+      {title}
+    </h3>
+
+    <p class="mt-1 text-xs leading-5 text-janh-tinta/60">
+      {description}
+    </p>
+  </div>
+
+</div>

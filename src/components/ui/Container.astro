@@ -1,0 +1,24 @@
+---
+/**
+ * Container global de JANH.
+ *
+ * RESPONSABILIDAD:
+ * - Centrar contenido.
+ * - Mantener un ancho máximo consistente.
+ * - Aplicar padding horizontal responsive.
+ *
+ * USO:
+ *
+ * <Container>
+ *   contenido
+ * </Container>
+ *
+ * El contenido colocado dentro se renderiza mediante <slot />.
+ */
+---
+
+<!-- ES COMO EL MARGEN DE LA PAGINA -->
+
+<div class="mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8">
+  <slot />
+</div>
