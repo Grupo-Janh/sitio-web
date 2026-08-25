@@ -5,7 +5,7 @@ import Base from '../layouts/Base.astro';
   <section class="mx-auto max-w-2xl px-6 py-24">
     <h1 class="text-4xl font-bold text-janh-tinta">Hablemos</h1>
 
-    <form id="form-contacto" class="mt-10 space-y-6">
+    <form name="contacto" method="POST" data-netlify="true" netlify-honeypot="website" class="mt-10 space-y-6">
       <div>
         <label for="nombre" class="block text-sm font-medium text-janh-tinta">Nombre</label>
         <input type="text" id="nombre" name="nombre" required
@@ -37,45 +37,9 @@ import Base from '../layouts/Base.astro';
         <span>Acepto el <a href="/aviso-de-privacidad" class="text-janh-lila underline">aviso de privacidad</a>.</span>
       </label>
 
-      <button type="submit" id="btn-enviar"
+      <button type="submit"
               class="rounded-full gradiente-janh px-8 py-3 font-medium text-white transition hover:opacity-90 disabled:opacity-50">
         Enviar mensaje
       </button>
-
-      <p id="mensaje-estado" class="text-sm"></p>
     </form>
   </section>
-
-  <script>
-    const form = document.getElementById('form-contacto');
-    const estado = document.getElementById('mensaje-estado');
-    const boton = document.getElementById('btn-enviar');
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      boton.disabled = true;
-      estado.textContent = 'Enviando...';
-
-      const datos = Object.fromEntries(new FormData(form));
-
-      try {
-        const res = await fetch('/api/lead', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(datos),
-        });
-
-        if (!res.ok) throw new Error('Fallo el envio');
-
-        estado.textContent = '¡Gracias! Te contactamos en menos de 24 horas.';
-        estado.className = 'text-sm text-green-600';
-        form.reset();
-      } catch (err) {
-        estado.textContent = 'Hubo un problema. Escríbenos a contacto@janh.com';
-        estado.className = 'text-sm text-red-600';
-      } finally {
-        boton.disabled = false;
-      }
-    });
-  </script>
-</Base>
