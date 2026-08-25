@@ -1,0 +1,81 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base titulo="Contacto | Grupo JANH" descripcion="Hablemos de tu infraestructura.">
+  <section class="mx-auto max-w-2xl px-6 py-24">
+    <h1 class="text-4xl font-bold text-janh-tinta">Hablemos</h1>
+
+    <form id="form-contacto" class="mt-10 space-y-6">
+      <div>
+        <label for="nombre" class="block text-sm font-medium text-janh-tinta">Nombre</label>
+        <input type="text" id="nombre" name="nombre" required
+               class="mt-2 w-full rounded-lg border border-janh-tinta/15 px-4 py-3 focus:border-janh-lila focus:outline-none" />
+      </div>
+
+      <div>
+        <label for="empresa" class="block text-sm font-medium text-janh-tinta">Empresa</label>
+        <input type="text" id="empresa" name="empresa"
+               class="mt-2 w-full rounded-lg border border-janh-tinta/15 px-4 py-3 focus:border-janh-lila focus:outline-none" />
+      </div>
+
+      <div>
+        <label for="email" class="block text-sm font-medium text-janh-tinta">Correo</label>
+        <input type="email" id="email" name="email" required
+               class="mt-2 w-full rounded-lg border border-janh-tinta/15 px-4 py-3 focus:border-janh-lila focus:outline-none" />
+      </div>
+
+      <div>
+        <label for="mensaje" class="block text-sm font-medium text-janh-tinta">¿En qué te ayudamos?</label>
+        <textarea id="mensaje" name="mensaje" rows="4" required
+                  class="mt-2 w-full rounded-lg border border-janh-tinta/15 px-4 py-3 focus:border-janh-lila focus:outline-none"></textarea>
+      </div>
+
+      <input type="text" name="website" tabindex="-1" autocomplete="off" class="hidden" />
+
+      <label class="flex items-start gap-3 text-sm text-janh-tinta/70">
+        <input type="checkbox" name="privacidad" required class="mt-1" />
+        <span>Acepto el <a href="/aviso-de-privacidad" class="text-janh-lila underline">aviso de privacidad</a>.</span>
+      </label>
+
+      <button type="submit" id="btn-enviar"
+              class="rounded-full gradiente-janh px-8 py-3 font-medium text-white transition hover:opacity-90 disabled:opacity-50">
+        Enviar mensaje
+      </button>
+
+      <p id="mensaje-estado" class="text-sm"></p>
+    </form>
+  </section>
+
+  <script>
+    const form = document.getElementById('form-contacto');
+    const estado = document.getElementById('mensaje-estado');
+    const boton = document.getElementById('btn-enviar');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      boton.disabled = true;
+      estado.textContent = 'Enviando...';
+
+      const datos = Object.fromEntries(new FormData(form));
+
+      try {
+        const res = await fetch('/api/lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(datos),
+        });
+
+        if (!res.ok) throw new Error('Fallo el envio');
+
+        estado.textContent = '¡Gracias! Te contactamos en menos de 24 horas.';
+        estado.className = 'text-sm text-green-600';
+        form.reset();
+      } catch (err) {
+        estado.textContent = 'Hubo un problema. Escríbenos a contacto@janh.com';
+        estado.className = 'text-sm text-red-600';
+      } finally {
+        boton.disabled = false;
+      }
+    });
+  </script>
+</Base>
