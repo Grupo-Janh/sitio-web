@@ -50,7 +50,7 @@ export const hero = {
 
   primaryCta: {
     label: "Agendar reunión →",
-    href: "/contacto",
+    href: "/agendar",
   },
 
   secondaryCta: {

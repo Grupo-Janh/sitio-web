@@ -1,0 +1,24 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base titulo="Agendar reunión | Grupo JANH"
+      descripcion="Agenda una llamada de diagnóstico con el equipo de Grupo JANH.">
+  <section class="mx-auto max-w-4xl px-6 py-24">
+    <h1 class="text-4xl font-bold text-janh-tinta">Agenda una reunión</h1>
+    <p class="mt-4 text-janh-tinta/60">
+      Elige el horario que mejor te funcione. La llamada dura 30 minutos y nos
+      sirve para entender qué necesitas.
+    </p>
+
+    <iframe
+      src="https://cal.com/grupo-janh/diagnostico"
+      class="mt-10 w-full rounded-2xl border border-janh-tinta/10"
+      style="height:700px;"
+      title="Agendar reunión con Grupo JANH"
+      loading="lazy"></iframe>
+
+    <p class="mt-6 text-sm text-janh-tinta/50">
+      ¿Prefieres escribirnos? Usa el <a href="/contacto" class="text-janh-lila underline">formulario de contacto</a>.
+    </p>
+  </section>
+</Base>

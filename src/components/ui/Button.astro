@@ -7,11 +7,11 @@
  *
  * PROPS:
  * href    → destino del botón.
- * variant → estilo visual.
+ * variant → estilo visual ("primary" | "secondary").
  *
  * EJEMPLO:
  *
- * <Button href="/contacto">
+ * <Button href="/agendar">
  *   Agendar reunión
  * </Button>
  */
@@ -32,7 +32,6 @@ const classes =
   variants[variant as keyof typeof variants] ??
   variants.primary;
 ---
-
 <a
   href={href}
   class:list={[
