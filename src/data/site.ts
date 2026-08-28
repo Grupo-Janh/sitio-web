@@ -39,4 +39,9 @@ export const navigation = [
     href: "/contacto",
     submenu: false,
   },
+  {
+    label: "Agendar",
+    href: "/agendar",
+    submenu: false,
+  },
 ];
