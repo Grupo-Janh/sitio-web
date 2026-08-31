@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://grupo-janh.netlify.app/sitemap-index.xml

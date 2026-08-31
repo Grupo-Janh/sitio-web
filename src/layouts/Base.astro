@@ -55,6 +55,21 @@ const { titulo, descripcion } = Astro.props;
       name="description"
       content={descripcion}
     />
+    <meta property = "og:type" content="website" />
+    <meta property = "og:title" content={titulo} />
+    <meta property = "og:description" content={descripcion} />
+    <meta property = "og:image" content={new URL('/og-image.jpg', Astro.site)} />
+    <meta property = "og:url" content= {Astro.url} />
+    <meta property = "og:locale" content="es_MX" />
+
+    <!--Twitter o X -->
+    <meta name="twitter:card" content= "summary_large_image" />
+    <meta name = "twitter:title" content={titulo} />
+    <meta name = "twitter:description" content={descripcion} />
+    <meta name = "twitter:image" content= {new URL('/og-image.jpg', Astro.site)} />
+
+    <!-- Canónica -->
+     <link rel="canonical" href={Astro.url} />
 
   </head>
 
