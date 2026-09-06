@@ -1,0 +1,46 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base titulo="Contacto | Grupo JANH" descripcion="Hablemos de tu infraestructura.">
+  <section class="mx-auto max-w-2xl px-6 py-24">
+    <h1 class="text-4xl font-bold text-janh-tinta">Hablemos</h1>
+
+    <form name="contacto" method="POST" data-netlify="true" netlify-honeypot="website" class="mt-10 space-y-6">
+      <div>
+        <label for="nombre" class="block text-sm font-medium text-janh-tinta">Nombre</label>
+        <input type="text" id="nombre" name="nombre" required
+               class="mt-2 w-full rounded-lg border border-janh-tinta/15 px-4 py-3 focus:border-janh-lila focus:outline-none" />
+      </div>
+
+      <div>
+        <label for="empresa" class="block text-sm font-medium text-janh-tinta">Empresa</label>
+        <input type="text" id="empresa" name="empresa"
+               class="mt-2 w-full rounded-lg border border-janh-tinta/15 px-4 py-3 focus:border-janh-lila focus:outline-none" />
+      </div>
+
+      <div>
+        <label for="email" class="block text-sm font-medium text-janh-tinta">Correo</label>
+        <input type="email" id="email" name="email" required
+               class="mt-2 w-full rounded-lg border border-janh-tinta/15 px-4 py-3 focus:border-janh-lila focus:outline-none" />
+      </div>
+
+      <div>
+        <label for="mensaje" class="block text-sm font-medium text-janh-tinta">¿En qué te ayudamos?</label>
+        <textarea id="mensaje" name="mensaje" rows="4" required
+                  class="mt-2 w-full rounded-lg border border-janh-tinta/15 px-4 py-3 focus:border-janh-lila focus:outline-none"></textarea>
+      </div>
+
+      <input type="text" name="website" tabindex="-1" autocomplete="off" class="hidden" />
+
+      <label class="flex items-start gap-3 text-sm text-janh-tinta/70">
+        <input type="checkbox" name="privacidad" required class="mt-1" />
+        <span>Acepto el <a href="/aviso-de-privacidad" class="text-janh-lila underline">aviso de privacidad</a>.</span>
+      </label>
+
+      <button type="submit"
+              class="rounded-full gradiente-janh px-8 py-3 font-medium text-white transition hover:opacity-90 disabled:opacity-50">
+        Enviar mensaje
+      </button>
+    </form>
+  </section>
+</Base>

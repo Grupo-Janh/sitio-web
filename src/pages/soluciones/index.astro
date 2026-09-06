@@ -1,0 +1,61 @@
+---
+import Base from '../../layouts/Base.astro';
+import Container from '../../components/ui/Container.astro';
+import Button from '../../components/ui/Button.astro';
+import SolutionDetailCard from '../../components/solutions/SolutionDetailCard.astro';
+import { solutionsHero, solutions } from '../../data/solutions';
+---
+
+<Base
+  titulo="Soluciones tecnológicas | Grupo JANH"
+  descripcion="Infraestructura de red, CCTV, cloud, desarrollo web, ciberseguridad y servicios de TI para empresas."
+>
+  <section class="pt-8 pb-14 lg:pt-12 lg:pb-20">
+    <Container>
+      <div class="overflow-hidden rounded-3xl bg-white p-8 sm:p-10 lg:p-14">
+        <div class="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
+          <div>
+            <p class="text-xs font-medium tracking-[0.2em] text-janh-lila uppercase">{solutionsHero.eyebrow}</p>
+            <h1 class="mt-7 max-w-4xl text-4xl font-bold leading-[1.05] tracking-tight text-janh-tinta sm:text-5xl lg:text-6xl">{solutionsHero.title}</h1>
+            <div class="mt-6 h-1 w-16 rounded-full gradiente-janh" aria-hidden="true"></div>
+          </div>
+          <div>
+            <p class="max-w-xl text-base leading-7 text-janh-tinta/65">{solutionsHero.description}</p>
+            <div class="mt-7"><Button href="/contacto">Platicar sobre un proyecto →</Button></div>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <section class="pb-20 lg:pb-28">
+    <Container>
+      <div class="mb-10 grid gap-5 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+        <p class="text-xs font-medium tracking-[0.2em] text-janh-lila uppercase">Áreas de especialidad</p>
+        <p class="max-w-2xl text-sm leading-6 text-janh-tinta/55 lg:justify-self-end lg:text-right">Podemos implementar una solución puntual o integrar varias disciplinas dentro de un mismo proyecto tecnológico.</p>
+      </div>
+
+      <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
+        {solutions.map((solution) => (
+          <SolutionDetailCard {...solution} />
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <section class="pb-8 lg:pb-12">
+    <Container>
+      <div class="relative overflow-hidden rounded-3xl bg-janh-tinta p-8 text-janh-hueso sm:p-10 lg:p-14">
+        <div class="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-janh-magenta/15 blur-3xl" aria-hidden="true"></div>
+        <div class="relative grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+          <div>
+            <p class="text-xs font-medium tracking-[0.2em] text-janh-hueso/55 uppercase">Soluciones a la medida</p>
+            <h2 class="mt-5 max-w-3xl text-3xl font-bold leading-tight tracking-tight sm:text-4xl">Tu necesidad no tiene que encajar en una caja.</h2>
+            <p class="mt-5 max-w-2xl text-sm leading-6 text-janh-hueso/65 sm:text-base sm:leading-7">Analizamos tu operación y combinamos infraestructura, conectividad, seguridad y desarrollo para construir una solución adecuada a tu entorno.</p>
+          </div>
+          <a href="/contacto" class="inline-flex items-center justify-center rounded-xl bg-white px-5 py-3 text-sm font-medium text-janh-tinta transition duration-200 hover:bg-janh-hueso">Cuéntanos tu proyecto →</a>
+        </div>
+      </div>
+    </Container>
+  </section>
+</Base>

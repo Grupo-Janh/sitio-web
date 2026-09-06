@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+/* =========================
+   TIPOGRAFÍAS
+   ========================= */
+
+@font-face {
+  font-family: "Nasalization";
+  src: url("/Fonts/nasalization-free.regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* =========================
+   TOKENS / IDENTIDAD JANH
+   ========================= */
+
+@theme {
+  /* Paleta JANH */
+  --color-janh-magenta: #C917ED;
+  --color-janh-violeta: #7C4387;
+  --color-janh-lila: #A438BA;
+  --color-janh-tinta: #322E33;
+  --color-janh-hueso: #F6F6FA;
+
+  /* Tipografía */
+  --font-nasalization: "Nasalization", sans-serif;
+}
+
+/* =========================
+   UTILIDADES DE MARCA
+   ========================= */
+
+.gradiente-janh {
+  background-image: linear-gradient(
+    90deg,
+    var(--color-janh-violeta),
+    var(--color-janh-magenta)
+  );
+}
+
+/* =========================
+   BASE
+   ========================= */
+
+body {
+  background-color: var(--color-janh-hueso);
+  color: var(--color-janh-tinta);
+}

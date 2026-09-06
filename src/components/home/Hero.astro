@@ -1,0 +1,189 @@
+---
+/**
+ * HERO — HOME JANH
+ *
+ * RESPONSABILIDAD:
+ * Primera sección visual de la página principal.
+ * Debe comunicar rápidamente la propuesta de valor de JANH.
+ *
+ * CONTIENE:
+ * - Eyebrow de soluciones.
+ * - Título principal H1.
+ * - Descripción.
+ * - CTAs principales.
+ * - Beneficios.
+ * - Visual principal.
+ *
+ * DEPENDE DE:
+ * - Container.astro
+ * - Button.astro
+ * - HeroBenefit.astro
+ * - Astro Image
+ * - assets/hero/hero.png
+ *
+ * NO DEBE CONTENER:
+ * - Navbar.
+ * - Footer.
+ * - Servicios completos.
+ * - Lógica de formularios.
+ *
+ * ANIMACIONES:
+ * Todavía ninguna.
+ * Posteriormente GSAP controlará únicamente la entrada
+ * y movimientos decorativos del Hero.
+ */
+import { Image } from "astro:assets";
+
+import Container from "../ui/Container.astro";
+import Button from "../ui/Button.astro";
+
+import HeroBenefit from "./HeroBenefit.astro";
+import HeroFeatureCard from "./HeroFeatureCard.astro";
+
+import heroImage from "../../assets/hero/hero.png";
+
+import { hero, heroBenefits, heroFeatures } from "../../data/home";
+---
+
+<section class="pt-8 pb-16 lg:pt-12 lg:pb-24">
+  <Container>
+    <div class="grid gap-8 lg:grid-cols-2 lg:gap-10">
+      <!-- =========================================
+           COLUMNA IZQUIERDA
+           Contenido principal del Hero
+      ========================================== -->
+
+      <div class="rounded-3xl bg-white p-8 sm:p-10 lg:p-12">
+        <p
+          class="text-xs font-medium tracking-[0.15em] text-janh-lila uppercase"
+        >
+          {hero.eyebrow}
+        </p>
+
+        <h1
+          class="mt-7 text-4xl font-bold leading-[1.05] tracking-tight text-janh-tinta sm:text-5xl lg:text-6xl"
+        >
+          {hero.title}
+        </h1>
+
+        <!-- Decorador -->
+        <div
+          class="mt-6 h-1 w-16 rounded-full gradiente-janh"
+          aria-hidden="true"
+        >
+        </div>
+
+        <p class="mt-8 max-w-xl text-base leading-7 text-janh-tinta/70">
+          {hero.description}
+        </p>
+
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <Button href={hero.primaryCta.href}> {hero.primaryCta.label} </Button>
+
+          <Button href={hero.secondaryCta.href} variant="secondary">
+            {hero.secondaryCta.label}
+          </Button>
+        </div>
+        <div class="mt-10 grid gap-6 md:grid-cols-3">
+          {heroBenefits.map((benefit) => <HeroBenefit {...benefit} />)}
+        </div>
+      </div>
+
+      <!-- =========================================
+           COLUMNA DERECHA
+           Placeholder temporal del Hero visual
+      ========================================== -->
+
+      <div class="relative">
+        <!-- ==============================
+       IMAGEN PRINCIPAL
+  =============================== -->
+
+        <div
+          class="relative
+      min-h-\420px\
+      overflow-hidden
+      rounded-3xl
+      bg-janh-tinta/5
+      sm:min-h-\520px\
+      lg:h-full"
+        >
+          <Image
+            src={heroImage}
+            alt="Soluciones tecnológicas integrales de Grupo JANH"
+            loading="eager"
+            fetchpriority="high"
+            class="absolute inset-0 h-full w-full object-cover"
+          />
+
+          <!--
+      Capa visual muy ligera para mejorar
+      contraste de elementos colocados encima.
+    -->
+          <div
+            class="absolute inset-0
+        bg-linear-to-t
+        from-janh-tinta/20
+        via-transparent
+        to-transparent"
+            aria-hidden="true"
+          >
+          </div>
+        </div>
+
+        <!-- ==============================
+       FEATURE CARDS
+
+       MOBILE:
+       Grid normal debajo de la imagen.
+
+       DESKTOP:
+       Cada tarjeta pasa a position:absolute.
+  =============================== -->
+
+        <div
+          class="mt-4
+      grid
+      gap-3
+      sm:grid-cols-3
+      lg:mt-0
+      lg:block"
+        >
+          <!-- Cloud -->
+          <div
+            class="lg:absolute
+        lg:left-4
+        lg:top-20
+        lg:z-10
+        lg:w-64"
+          >
+            <HeroFeatureCard {...heroFeatures[0]} />
+          </div>
+
+          <!-- Infraestructura -->
+          <div
+            class="lg:absolute
+        lg:left-4
+        lg:top-1/2
+        lg:z-10
+        lg:w-64
+        lg:-translate-y-1/2"
+          >
+            <HeroFeatureCard {...heroFeatures[1]} />
+          </div>
+
+          <!-- Ciberseguridad -->
+          <div
+            class="lg:absolute
+        lg:left-4
+        lg:bottom-20
+        lg:z-10
+        lg:w-64"
+          >
+            <HeroFeatureCard {...heroFeatures[2]} />
+          </div>
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>

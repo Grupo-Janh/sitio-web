@@ -1,0 +1,155 @@
+---
+/**
+ * SOLUTIONS SECTION — HOME JANH
+ *
+ * RESPONSABILIDAD:
+ * Presentar las principales áreas de soluciones
+ * tecnológicas disponibles en JANH.
+ *
+ * DATOS:
+ * - solutionsSection
+ * - homeSolutions
+ *
+ * provenientes de:
+ * - data/home.ts
+ *
+ * DEPENDENCIAS:
+ * - Container.astro
+ * - SolutionCard.astro
+ *
+ * NO DEBE CONTENER:
+ * - Información específica del Hero.
+ * - Footer.
+ * - Navbar.
+ * - Datos duplicados de las soluciones.
+ *
+ * RESPONSIVE:
+ * Mobile  → 1 columna.
+ * Tablet  → 2 columnas.
+ * Desktop → distribución ampliada.
+ *
+ * FUTURO:
+ * - Imágenes optimizadas.
+ * - Composición visual asimétrica.
+ * - Animaciones GSAP mediante ScrollTrigger.
+ */
+
+import Container from "../ui/Container.astro";
+import SolutionCard from "./SolutionCard.astro";
+
+import { solutionsSection, homeSolutions } from "../../data/home";
+---
+
+<section id="soluciones" class="py-20 lg:py-28">
+    <Container>
+        <!-- =========================================
+     CABECERA DE SOLUCIONES
+
+     La etiqueta superior identifica la sección.
+
+     Debajo:
+     - Título a la izquierda.
+     - Descripción a la derecha en desktop.
+     - Todo se apila en mobile.
+
+     Esta estructura evita que el eyebrow quede
+     visualmente aislado del título principal.
+========================================== -->
+
+        <div>
+            <!-- Identificador de sección -->
+            <div>
+                <p
+                    class="text-xs
+        font-medium
+        tracking-[0.2em]
+        text-janh-lila
+        uppercase"
+                >
+                    {solutionsSection.eyebrow}
+                </p>
+
+                <div
+                    class="mt-4 h-1 w-12 rounded-full gradiente-janh"
+                    aria-hidden="true"
+                >
+                </div>
+            </div>
+
+            <!-- Título + descripción -->
+            <div
+                class="mt-8
+      grid
+      gap-6
+      lg:grid-cols-[1.15fr_0.85fr]
+      lg:items-end"
+            >
+                <h2
+                    class="max-w-3xl
+        text-3xl
+        font-bold
+        leading-[1.05]
+        tracking-tight
+        text-janh-tinta
+        sm:text-4xl
+        lg:text-5xl"
+                >
+                    {solutionsSection.title}
+                </h2>
+
+                <p
+                    class="max-w-xl
+        text-base
+        leading-7
+        text-janh-tinta/60
+        lg:pb-1"
+                >
+                    {solutionsSection.description}
+                </p>
+            </div>
+        </div>
+
+        <!-- =========================================
+     GRID DE SOLUCIONES
+
+     Mobile:
+     - 1 columna.
+
+     Tablet:
+     - 2 columnas.
+
+     Desktop:
+     - Grid de 12 columnas.
+     - Primeras 3 tarjetas ocupan 4 columnas.
+     - Últimas 2 ocupan 6 columnas.
+
+     Resultado desktop:
+     3 tarjetas arriba + 2 tarjetas equilibradas abajo.
+========================================== -->
+
+        <div
+            class="mt-12
+    grid
+    grid-cols-1
+    gap-5
+    md:grid-cols-2
+    xl:grid-cols-12"
+        >
+            {
+                homeSolutions.map((solution, index) => (
+                    <div
+                        class:list={[
+                            "h-full",
+
+                            index < 3 ? "xl:col-span-4" : "xl:col-span-6",
+
+                            index === 4 ? "md:col-span-2 xl:col-span-6" : "",
+                        ]}
+                    >
+                        <SolutionCard {...solution} />
+                    </div>
+                ))
+            }
+        </div>
+    </Container>
+</section>

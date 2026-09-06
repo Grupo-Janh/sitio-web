@@ -1,0 +1,70 @@
+---
+/**
+ * Header global de JANH.
+ *
+ * RESPONSABILIDAD:
+ * - Logo
+ * - Navbar desktop
+ * - CTA principal
+ *
+ * DEPENDE DE:
+ * - Container.astro
+ * - Navbar.astro
+ * - Button.astro
+ *
+ * DESPUÉS:
+ * - Mobile menu
+ * - Dropdowns
+ * - comportamiento al hacer scroll
+ */
+
+import Navbar from "./Navbar.astro";
+import Container from "../ui/Container.astro";
+import Button from "../ui/Button.astro";
+import MobileMenu from "./MobileMenu.astro";
+---
+
+<header class="sticky top-0 z-50 pt-4">
+  <Container>
+    <div
+      class="flex items-center justify-between rounded-4xl border border-janh-tinta/20 bg-white/60 px-6 py-3 shadow-sm backdrop-blur"
+    >
+      <!-- Logo -->
+      <a
+        href="/"
+        class="text-xl font-bold tracking-[0.28em] text-janh-tinta"
+        aria-label="JANH - Inicio"
+      >
+        JANH
+      </a>
+
+      <!-- Navegación -->
+      <Navbar />
+
+      <!-- CTA -->
+      <div class="hidden lg:block">
+        <Button href="/contacto"> Agendar reunión → </Button>
+      </div>
+      <MobileMenu />
+    </div>
+    
+  </Container>
+</header>
+
+<!-- SOLUCION ANTERIOR 
+<header
+  class="sticky top-0 z-50 border-b border-janh-tinta/10 bg-white/80 backdrop-blur"
+>
+  <div
+    class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4"
+  >
+    <a
+      href="/"
+      class="text-xl font-bold tracking-[0.2em] text-janh-tinta"
+    >
+      JANH
+    </a>
+
+    <Navbar />
+  </div>
+</header> -->

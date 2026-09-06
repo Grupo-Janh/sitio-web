@@ -1,0 +1,53 @@
+---
+/**
+ * HERO BENEFIT — JANH
+ *
+ * RESPONSABILIDAD:
+ * Mostrar un beneficio resumido dentro del Hero.
+ *
+ * EJEMPLOS:
+ * - Confianza
+ * - Escalabilidad
+ * - Acompañamiento
+ *
+ * PROPS:
+ * title       → Nombre del beneficio.
+ * description → Texto explicativo.
+ * icon        → Representación visual temporal.
+ *
+ * CONSUMIDO POR:
+ * - Hero.astro
+ *
+ * NO CONTIENE:
+ * - Datos propios.
+ * - Posicionamiento general del Hero.
+ * - Animaciones globales.
+ */
+
+const {
+  title,
+  description,
+  icon = "•",
+} = Astro.props;
+---
+
+<div class="flex items-start gap-3">
+
+  <div
+    class="flex size-10 shrink-0 items-center justify-center rounded-xl border border-janh-violeta/20 text-janh-violeta"
+    aria-hidden="true"
+  >
+    {icon}
+  </div>
+
+  <div>
+    <h3 class="text-sm font-semibold text-janh-tinta">
+      {title}
+    </h3>
+
+    <p class="mt-1 text-xs leading-5 text-janh-tinta/60">
+      {description}
+    </p>
+  </div>
+
+</div>
