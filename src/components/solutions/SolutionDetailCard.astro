@@ -1,0 +1,47 @@
+---
+const {
+  number,
+  title,
+  description,
+  services = [],
+  image,
+  imageAlt = "",
+  href = "/contacto",
+} = Astro.props;
+---
+
+<article class="group flex h-full flex-col overflow-hidden rounded-3xl border border-janh-tinta/10 bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+  <div class="relative h-48 overflow-hidden sm:h-52">
+    <img
+      src={image}
+      alt={imageAlt}
+      loading="lazy"
+      decoding="async"
+      class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-janh-tinta/25 via-transparent to-transparent"></div>
+
+    <span class="absolute bottom-4 left-5 rounded-full bg-white/95 px-4 py-2 text-xs font-medium tracking-[0.18em] text-janh-lila shadow-sm backdrop-blur">
+      {number}
+    </span>
+  </div>
+
+  <div class="flex flex-1 flex-col p-7 sm:p-8">
+    <div class="flex items-start justify-between gap-4">
+      <h2 class="text-2xl font-semibold tracking-tight text-janh-tinta sm:text-3xl">{title}</h2>
+      <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-janh-tinta/10 text-lg text-janh-violeta transition duration-300 group-hover:border-janh-magenta/30 group-hover:text-janh-magenta" aria-hidden="true">↗</span>
+    </div>
+
+    <p class="mt-4 text-sm leading-6 text-janh-tinta/60 sm:text-base sm:leading-7">{description}</p>
+
+    <ul class="mt-7 flex flex-wrap gap-2">
+      {services.map((service) => (
+        <li class="rounded-lg bg-janh-hueso px-3 py-2 text-xs text-janh-tinta/70 sm:text-sm">{service}</li>
+      ))}
+    </ul>
+
+    <a href={href} class="mt-8 inline-flex items-center gap-2 self-start text-sm font-medium text-janh-violeta transition group-hover:text-janh-magenta">
+      Explorar solución <span aria-hidden="true">→</span>
+    </a>
+  </div>
+</article>
